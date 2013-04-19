@@ -1,0 +1,38 @@
+{% extends "template/base.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<style type="text/css">
+		#mycontent { padding: 15px; background-color: #ccf6ff }
+		#mycontent div { padding: 5px; padding-left: 25px; padding-right: 300px }
+		.error_message { display: none;}
+		form li {list-style-type: none;}
+	</style>
+{% endblock %}
+{% import "macro/section.html" as sectionMacro %}
+{% import "macro/bootstrap.html" as bootstrapMacro %}
+{% block content %}
+  	{{ sectionMacro.formStart( "register.php", "post", {"class": "formClass"} ) }}
+		{{ sectionMacro.text( "First Name", "text_input", { "class": "sf_validate_required", "placeholder": "First Name" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.text( "Last Name", "text_input", { "class": "sf_validate_required", "placeholder": "Last Name" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.text( "Address 1", "text_input", { "class": "sf_validate_required", "placeholder": "Address 1" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.text( "Address 2", "text_input", { "class": "sf_validate_required", "placeholder": "Address 2" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.text( "City", "text_input", { "class": "sf_validate_required", "placeholder": "City" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.selectStates( "State", "state") }}
+		{{ sectionMacro.text( "Zip", "text_input", { "class": "sf_validate_required", "placeholder": "Zip" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.selectCountries("Country", "country", none, "US")}}
+		{{ sectionMacro.text( "e-mail", "text_input", { "class": "sf_validate_required", "placeholder": "e-mail" }, { "message": "Help Text", "class": "help-block" } ) }}
+		{{ sectionMacro.selectStart( "Test", "select") }}
+			{{ sectionMacro.option( "select" ) }}
+			{{ sectionMacro.option( "$350 - NOMA Member: On-site Registration", "350" ) }}
+			{{ sectionMacro.option( "$450 - non NOMA Member: On-site Registration", "450" ) }}
+			{{ sectionMacro.option( "$160 - Student: On-site Registration", "160" ) }}
+			{{ sectionMacro.option( "$200 - Guest: On-site Registration", "200" ) }}
+			{{ sectionMacro.option( "$150 - NOMA Member: Single Day Pass", "150" ) }}
+			{{ sectionMacro.option( "$250 - non NOMA Member: Single Day Pass", "250" ) }}
+			{{ sectionMacro.option( "$100 - Student: Single Day Pass", "100" ) }}
+			{{ sectionMacro.option( "$100 - Guest: Single Day Pass", "100" ) }}
+		{{ sectionMacro.selectEnd() }}
+		{{ sectionMacro.submit(none, "Submit")}}
+	{{ sectionMacro.formEnd() }}
+{% endblock %}

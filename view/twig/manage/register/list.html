@@ -51,15 +51,10 @@
 			<td class="su-product"></td>
 			<td class="su-product-price"></td>
 			<td class="su-manage">
-				<!--
-<div class="pull-right">
-					<a href="" class="btn su-edit" data-controller-modal=""><i class="icon-pencil"></i> {{ "Edit"|trans }}</a>
-				</div>
--->
 				{{ bootstrapMacro.dropdownButtonSplit(
 					"btn",
 					[
-						{ "name": "Edit", "icon": "icon-pencil" }
+						{ "name": "Edit", "icon": "icon-pencil", "attributes": { "class": "su-edit", "data-controller-modal": "" } }
 					],
 	 
 					[

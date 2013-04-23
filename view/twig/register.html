@@ -2,17 +2,12 @@
 
 {% block head %}
 	{{ parent() }}
-	<style type="text/css">
-		#mycontent { padding: 15px; background-color: #ccf6ff }
-		#mycontent div { padding: 5px; padding-left: 25px; padding-right: 300px }
-		.error_message { display: none;}
-		form li {list-style-type: none;}
-	</style>
+	{{ headMacro.coffeescript( "package/SUPackageNoma/static/js/register.coffee" ) }}
 {% endblock %}
 {% import "macro/section.html" as sectionMacro %}
 {% import "macro/bootstrap.html" as bootstrapMacro %}
 {% block content %}
-  	<div class="protoClonedInput" style="display: none">
+  	<div class="su_prototype">
 		{{ sectionMacro.text( "First Name", "results[1][fname]", { "class": "sf_validate_required", "placeholder": "First Name" }, { "message": "Help Text", "class": "help-block" } ) }}
 		{{ sectionMacro.text( "Last Name", "results[1][lname]", { "class": "sf_validate_required", "placeholder": "Last Name" }, { "message": "Help Text", "class": "help-block" } ) }}
 		{{ sectionMacro.text( "Address 1", "results[1][address1]", { "class": "sf_validate_required", "placeholder": "Address 1" }, { "message": "Help Text", "class": "help-block" } ) }}
@@ -28,89 +23,13 @@
 				{{ sectionMacro.option( "$"~option.price~" - "~option.name, { "value": id } ) }}
 			{% endfor %}
 		{{ sectionMacro.selectEnd() }}
+		<hr>
   	</div>
   	{{ sectionMacro.formStart( "post", "register/submit", {"class": "formClass"} ) }}
-  	<div id="row1" class="clonedInput">
-		{{ sectionMacro.text( "First Name", "results[1][fname]", { "class": "sf_validate_required", "placeholder": "First Name" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.text( "Last Name", "results[1][lname]", { "class": "sf_validate_required", "placeholder": "Last Name" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.text( "Address 1", "results[1][address1]", { "class": "sf_validate_required", "placeholder": "Address 1" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.text( "Address 2", "results[1][address2]", { "class": "sf_validate_required", "placeholder": "Address 2" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.text( "City", "results[1][city]", { "class": "sf_validate_required", "placeholder": "City" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.selectStates( "State", "results[1][state]", { "class" : "no-chzn" }) }}
-		{{ sectionMacro.text( "Zip", "results[1][zip]", { "class": "sf_validate_required", "placeholder": "Zip" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.selectCountries("Country", "results[1][country]", { "class" : "no-chzn" }, "US")}}
-		{{ sectionMacro.text( "e-mail", "results[1][email]", { "class": "sf_validate_required", "placeholder": "e-mail" }, { "message": "Help Text", "class": "help-block" } ) }}
-		{{ sectionMacro.selectStart( "Product", "results[1][product]", { "class" : "no-chzn" }) }}
-			{{ sectionMacro.option( "select" ) }}
-			{% for id, option in products %}
-				{{ sectionMacro.option( "$"~option.price~" - "~option.name, { "value": id } ) }}
-			{% endfor %}
-		{{ sectionMacro.selectEnd() }}
-  	</div>
-  		{{ sectionMacro.button( none, "Add Another", { "id" : "btnAdd", "value" : "Add Another"})}}
+  	  		{{ sectionMacro.button( none, "Add Another", { "id" : "btnAdd", "value" : "Add Another"})}}
 		{{ sectionMacro.submit(none, "Submit")}}
 	{{ sectionMacro.formEnd() }}
 
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			$('#btnAdd').click(function () {
-				var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
-				var newNum = new Number(num + 1); // the numeric ID of the new input field being added
 
-				// create the new element via clone(), and manipulate it's ID using newNum value
-				//var newElem = $('#row' + num).clone().attr('id', 'row' + newNum);
-				var newElem = $('.protoClonedInput').clone().attr('id', 'row' + newNum).removeAttr("style");
-				//console.log(newElem);
-				//console.log(newElem.find("td"));
-				//console.log(newElem.find("input"));
-				//console.log(newElem.find("select"));
-
-				// manipulate the name/id values of the input inside the new element
-				//newElem("input").each(function(){
-				//$(this).attr('name', 'name' + "2");
-				//});
-
-				newElem.find("input").not('[autocomplete]').each(function () {
-					var name = $(this).attr('name');
-					name = name.slice(11,-1);
-					$(this).attr('name', 'results[' + newNum + '][' + name + ']' );
-					//console.log($(this).attr('name'));
-				});
-				newElem.find("select").each(function () {
-					var name = $(this).attr('name');
-					name = name.slice(11,-1);
-					$(this).attr('name', 'results[' + newNum + '][' + name + ']' );
-					//console.log($(this).attr('name'));
-				});
-
-				// insert the new element after the last "duplicatable" input field
-				$('#row' + num).after(newElem);
-
-				// enable the "remove" button
-				//$('#btnDel').attr('disabled','');
-
-				// business rule: you can only add 5 names
-				//if (newNum == 5)
-				//$('#btnAdd').attr('disabled','disabled');
-				//});
-
-				/*
-$('#btnDel').click(function() {
-                var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
-                $('#input' + num).remove();     // remove the last element
- 
-                // enable the "add" button
-                $('#btnAdd').attr('disabled','');
- 
-                // if only one element remains, disable the "remove" button
-                if (num-1 == 1)
-                    $('#btnDel').attr('disabled','disabled');
-            });
- 
-            $('#btnDel').attr('disabled','disabled');
-*/
-			});
-		});
-	</script>
 
 {% endblock %}

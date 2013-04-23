@@ -1,0 +1,17 @@
+<database>
+	<table name="noma_register">
+		<behavior name="auto_add_pk" />
+		<behavior name="timestampable" />
+		<column name="fname" type="varchar" size="100"/>
+		<column name="lname" type="varchar" size="100"/>
+		<column name="email" type="varchar" size="100"/>
+		<column name="address1" type="varchar" size="100"/>
+		<column name="address2" type="varchar" size="100"/>
+		<column name="city" type="varchar" size="100"/>
+		<column name="state" type="varchar" size="20"/>
+		<column name="zip" type="varchar" size="10"/>
+		<column name="country" type="varchar" size="100"/>
+		<column name="product" type="varchar" size="100"/>
+		<column name="product_price" type="decimal" size="11" scale="2"/>
+	</table>
+</database>

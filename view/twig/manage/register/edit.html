@@ -1,0 +1,37 @@
+{% set bare_title = "Register"|trans %}	
+{% set bare_modal_css = { "width": "750px", "height": "350px" } %}
+{% extends base_template %}
+
+{% block head %}
+	{{ parent() }}
+	{% import "macro/head.html" as headMacro %}
+	{{ headMacro.js( "javascript/jquery.form.js" ) }}
+	{{ headMacro.js( "javascript/SF/validation.js" ) }}
+	{{ headMacro.coffeescript( "package/SUPackageNoma/static/js/manage/register/edit.coffee" ) }}
+{% endblock %}
+
+{% import "macro/section.html" as sectionMacro %}
+{% block content %}
+{{ sectionMacro.formStart( "post", is_add ? "action/register/manage/add" : "action/register/manage/set", { "id": "su-register-form", "data-cache_dirty": "register_edit", "data-submit_button": "a#su-submit-register" } ) }}
+{{ sectionMacro.text( "Fname"|trans, "fname", { "value": register.Fname, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "Lname"|trans, "lname", { "value": register.Lname, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "Email"|trans, "email", { "value": register.Email, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "Address1"|trans, "address1", { "value": register.Address1, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "Address2"|trans, "address2", { "value": register.Address2, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "City"|trans, "city", { "value": register.City, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "State"|trans, "state", { "value": register.State, "maxlength": "20" } ) }}
+{{ sectionMacro.text( "Zip"|trans, "zip", { "value": register.Zip, "maxlength": "10" } ) }}
+{{ sectionMacro.text( "Country"|trans, "country", { "value": register.Country, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "Product"|trans, "product", { "value": register.Product, "maxlength": "100" } ) }}
+{{ sectionMacro.text( "Product Price"|trans, "product_price", { "value": register.ProductPrice, "maxlength": "11" } ) }}
+{% if not is_add %}{{ sectionMacro.hidden( "id", { "value": register.Id, "class": "sf_validate_required" } ) }}{% endif %}
+
+{{ sectionMacro.formEnd() }}
+{% if not is_bare %}<div class="well">{{ block('footer') }}</div>{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+<a href="javascript:void(0);" id="su-submit-register" class="btn btn-primary">{{ "Submit"|trans }}</a>
+{% if not is_add %}<a href="javascript:void(0);" id="su-delete-register" data-action="action/register/manage/delete" data-id="{{ register.Id }}" data-confirm="Are you sure you want to delete this register?" class="btn btn-danger">{{ "Delete"|trans }}</a>{% endif %}
+{% endblock %}

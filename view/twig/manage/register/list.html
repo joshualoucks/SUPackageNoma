@@ -1,0 +1,80 @@
+{% extends base_template %}
+
+{% block head %}
+	{{ parent() }}
+	{% import "macro/head.html" as headMacro %}
+	{{ headMacro.coffeescript( "package/SUPackageNoma/static/js/manage/register/list.coffee" ) }}
+{% endblock %}
+
+{% import "macro/form.html" as formMacro %}
+{% import "macro/base.html" as baseMacro %}
+{% import "macro/bootstrap.html" as bootstrapMacro %}
+{% block content %}
+<div class="row">
+	<div class="span">
+		{{ baseMacro.search( "su-register-search", "Search"|trans ) }}
+	</div>
+	<div class="span">
+		<a href="register/manage/add" class="btn btn-primary" data-controller-modal="">{{ "Add"|trans }}</a>
+	</div>
+</div>
+<table id="register-list" class="table table-bordered table-striped table-condensed">
+	<thead>
+		{{ baseMacro.sortby_table( "su-register-sortby", {
+				"Fname": "Fname"|trans,
+				"Lname": "Lname"|trans,
+				"Email": "Email"|trans,
+				"Address1": "Address1"|trans,
+				"Address2": "Address2"|trans,
+				"City": "City"|trans,
+				"State": "State"|trans,
+				"Zip": "Zip"|trans,
+				"Country": "Country"|trans,
+				"Product": "Product"|trans,
+				"ProductPrice": "Product Price"|trans,
+				"manage": ""
+			},
+			[12]
+		) }}
+	</thead>
+	<tbody>
+		<tr class="su_prototype" data-id="">
+			<td class="su-fname"></td>
+			<td class="su-lname"></td>
+			<td class="su-email"></td>
+			<td class="su-address1"></td>
+			<td class="su-address2"></td>
+			<td class="su-city"></td>
+			<td class="su-state"></td>
+			<td class="su-zip"></td>
+			<td class="su-country"></td>
+			<td class="su-product"></td>
+			<td class="su-product-price"></td>
+			<td class="su-manage">
+				<!--
+<div class="pull-right">
+					<a href="" class="btn su-edit" data-controller-modal=""><i class="icon-pencil"></i> {{ "Edit"|trans }}</a>
+				</div>
+-->
+				{{ bootstrapMacro.dropdownButtonSplit(
+					"btn",
+					[
+						{ "name": "Edit", "icon": "icon-pencil" }
+					],
+	 
+					[
+						[
+							{ "name": "Edit", "icon": "icon-pencil", "attributes": { "class": "su-edit", "data-controller-modal": "" } }
+						],
+						[
+							{ "name": "Delete", "icon": "icon-trash", "attributes": { "id": "su-delete", "href": "#", "data-action": "action/register/manage/delete", "data-confirm": "Are you sure you want to delete this registration?" } }
+						]
+					]
+				) }}
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div class="row"><div class="span pull-right">Results: <span id="register-results-num"></span></div></div>
+{{ baseMacro.pagination_basic( "su-register-pagination" ) }}
+{% endblock %}

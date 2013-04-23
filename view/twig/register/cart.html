@@ -25,11 +25,12 @@
 </p>
 <div id="transaction_form">
 	{{ formMacro.formStart( "post", transaction_url ) }}
-		{{ formMacro.hidden( 'module', { "value": 'register' } ) }}
+		{{ formMacro.hidden( 'module', { "value": 'subscription' } ) }}
 		{# {{ formMacro.hidden( 'hash', { "value": user.user_hash } ) }} #}
 		{{ formMacro.hidden( 'submit_go_checkout', { "value": 'yes' } ) }}
 		{# {{ formMacro.hidden( 'submit_go_checkout1', { "value": 'yes' } ) }}
 		{{ formMacro.hidden( 'submit_go_checkout2', { "value": 'yes' } ) }} #}
+		{{ formMacro.hidden( 'module2', {"value": 'nologin' })}}
 		{{ formMacro.hidden( 'first_page', { "value": '1' } ) }}
 		{{ formMacro.hidden( 'module_first_page', { "value": '1' } ) }}
 		{{ formMacro.hidden( 'sessid', { "value": session_id } ) }}

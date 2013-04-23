@@ -1,10 +1,12 @@
-{% extends "subscription/template/base.html" %}
+{% extends "template/base.html" %}
+
 {% import "macro/head.html" as headMacro %}
 {% import "macro/form.html" as formMacro %}
 
 {% block head %}
 
 	{{ parent() }}
+
 	<script type="text/javascript">
 	//<![CDATA[
 	jQuery(function(){
@@ -19,6 +21,7 @@
 {{ parent() }}
 <p>
 	{% trans "Please wait... You will be forwarded to the checkout shortly." %}
+{{ dump(_POST) }}
 </p>
 <div id="transaction_form">
 	{{ formMacro.formStart( "post", transaction_url ) }}

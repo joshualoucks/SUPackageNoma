@@ -135,7 +135,9 @@ $story_component = new SF_component_story();
 		}
 		$this->checkout();
 		//var_dump($this->products);exit;
-		throw new SF_exception_route_redirect( "/register/manage" );
+		//throw new SF_exception_route_redirect( "/register/manage" );
+		$this->view = "register/cart.html";
+		
 		//throw new SF_exception_route_redirect( "/transaction.php" );
 		
 	}

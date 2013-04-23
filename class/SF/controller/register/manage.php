@@ -41,6 +41,9 @@ final class SF_controller_register_manage
 	{
 		return DB_user::getRequiredSessionUser()->isLevelOrAbove( "Admin" );
 	}
+	public function authenticate() {
+		return parent::authenticate() && DB_user::isAdmin();
+	}
 
 	
 }

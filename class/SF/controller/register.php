@@ -36,6 +36,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		}
 	}
 	
+	
 	/**
 	 * Set necessary twig variables here via $this->set()
 	 */
@@ -62,6 +63,8 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 			$this->showStory = FALSE;
 		}
 		
+		$this->set( "products", $this->_available_products );
+		
 		/*
 $story_component = new SF_component_story();
 		
@@ -75,6 +78,17 @@ $story_component = new SF_component_story();
 		}
 */
 	}
+	
+	private $_available_products = array(
+		1 => array( "name" => "NOMA Member: On-site Registration", "price" => "350.00" ),
+		2 => array( "name" => "non NOMA Member: On-site Registration", "price" => "450.00" ),
+		3 => array( "name" => "Student: On-site Registration", "price" => "160.00" ),
+		4 => array( "name" => "Guest: On-site Registration", "price" => "200.00" ),
+		5 => array( "name" => "NOMA Member: Single Day Pass", "price" => "150.00" ),
+		6 => array( "name" => "non NOMA Member: Single Day Pass", "price" => "250.00" ),
+		7 => array( "name" => "Student: Single Day Pass", "price" => "100.00" ),
+		8 => array( "name" => "Guest: Single Day Pass", "price" => "100.00" ),
+	);
 	
 	/**
 	*
@@ -93,40 +107,8 @@ $story_component = new SF_component_story();
 		foreach( $results as $key => $result ) {	
 			//$price = $result["prouct"]
 			//var_dump($result);exit;
-			switch ($result["product"]) {
-				case 1:
-					$result["product_price"] = "350.00";
-					$result["product"] = "$350 - NOMA Member: On-site Registration";
-					break;
-				case 2:
-					$result["product_price"] = "450.00";
-					$result["product"] = "$450 - non NOMA Member: On-site Registration";
-					break;
-				case 3:
-					$result["product_price"] = "160.00";
-					$result["product"] = "$160 - Student: On-site Registration";
-					break;
-				case 4:
-					$result["product_price"] = "200.00";
-					$result["product"] = "$200 - Guest: On-site Registration";
-					break;
-				case 5:
-					$result["product_price"] = "150.00";
-					$result["product"] = "$150 - NOMA Member: Single Day Pass";
-					break;
-				case 6:
-					$result["product_price"] = "250.00";
-					$result["product"] = "$250 - non NOMA Member: Single Day Pass";
-					break;
-				case 7:
-					$result["product_price"] = "100.00";
-					$result["product"] = "$100 - Student: Single Day Pass";
-					break;
-				case 8:
-					$result["product_price"] = "100.00";
-					$result["product"] = "$100 - Guest: Single Day Pass";
-					break;
-			}
+			$result["product_price"] = $this->_available_products[$result["product"]]["price"];
+			$result["product"] = $this->_available_products[$result["product"]]["name"];
 			$input = self::getInput( array(
 				"fname" => FILTER_UNSAFE_RAW,
 				"lname" => FILTER_UNSAFE_RAW,
@@ -326,6 +308,15 @@ $story_component = new SF_component_story();
 		//$this->set( "user", $this->user->toArray( self::$array_type ) );	
 		}
 		
+	private static function _getUniqueCodeForTable()
+	{
+		static $unique;
+		if( is_null($unique) ) {
+			$unique = uniqid();
+		}
+		return $unique;
+	}
+		
 	public function buildProductFromRegistrations( $result )
 		{
 			//$RegDescr = implode(" | ", $result);
@@ -333,7 +324,7 @@ $story_component = new SF_component_story();
 			//$price = $result["product_price"];
 			
 			$product = new stdClass();
-			$product->table_name = 'temp_transactions_products_'.uniqid();
+			$product->table_name = 'temp_transactions_products_'.self::_getUniqueCodeForTable();
 			$product->site_id = SF_static_global::getSiteId();
 			$product->title = $result["product"];
 			$product->description1 = implode(" | ", $result);

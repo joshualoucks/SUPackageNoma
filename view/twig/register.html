@@ -24,14 +24,9 @@
 		{{ sectionMacro.text( "e-mail", "results[1][email]", { "class": "sf_validate_required", "placeholder": "e-mail" }, { "message": "Help Text", "class": "help-block" } ) }}
 		{{ sectionMacro.selectStart( "Product", "results[1][product]", { "class" : "no-chzn" }) }}
 			{{ sectionMacro.option( "select" ) }}
-			{{ sectionMacro.option( "$350 - NOMA Member: On-site Registration", {"value": "1"} ) }}
-			{{ sectionMacro.option( "$450 - non NOMA Member: On-site Registration", {"value": "2"} ) }}
-			{{ sectionMacro.option( "$160 - Student: On-site Registration", {"value": "3"} ) }}
-			{{ sectionMacro.option( "$200 - Guest: On-site Registration", {"value": "4"} ) }}
-			{{ sectionMacro.option( "$150 - NOMA Member: Single Day Pass", {"value": "5"} ) }}
-			{{ sectionMacro.option( "$250 - non NOMA Member: Single Day Pass", {"value": "6"} ) }}
-			{{ sectionMacro.option( "$100 - Student: Single Day Pass", {"value": "7"} ) }}
-			{{ sectionMacro.option( "$100 - Guest: Single Day Pass", {"value": "8"} ) }}
+			{% for id, option in products %}
+				{{ sectionMacro.option( "$"~option.price~" - "~option.name, { "value": id } ) }}
+			{% endfor %}
 		{{ sectionMacro.selectEnd() }}
   	</div>
   	{{ sectionMacro.formStart( "post", "register/submit", {"class": "formClass"} ) }}
@@ -47,14 +42,9 @@
 		{{ sectionMacro.text( "e-mail", "results[1][email]", { "class": "sf_validate_required", "placeholder": "e-mail" }, { "message": "Help Text", "class": "help-block" } ) }}
 		{{ sectionMacro.selectStart( "Product", "results[1][product]", { "class" : "no-chzn" }) }}
 			{{ sectionMacro.option( "select" ) }}
-			{{ sectionMacro.option( "$350 - NOMA Member: On-site Registration", {"value": "1"} ) }}
-			{{ sectionMacro.option( "$450 - non NOMA Member: On-site Registration", {"value": "2"} ) }}
-			{{ sectionMacro.option( "$160 - Student: On-site Registration", {"value": "3"} ) }}
-			{{ sectionMacro.option( "$200 - Guest: On-site Registration", {"value": "4"} ) }}
-			{{ sectionMacro.option( "$150 - NOMA Member: Single Day Pass", {"value": "5"} ) }}
-			{{ sectionMacro.option( "$250 - non NOMA Member: Single Day Pass", {"value": "6"} ) }}
-			{{ sectionMacro.option( "$100 - Student: Single Day Pass", {"value": "7"} ) }}
-			{{ sectionMacro.option( "$100 - Guest: Single Day Pass", {"value": "8"} ) }}
+			{% for id, option in products %}
+				{{ sectionMacro.option( "$"~option.price~" - "~option.name, { "value": id } ) }}
+			{% endfor %}
 		{{ sectionMacro.selectEnd() }}
   	</div>
   		{{ sectionMacro.button( none, "Add Another", { "id" : "btnAdd", "value" : "Add Another"})}}

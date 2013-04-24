@@ -7,13 +7,13 @@
 
 	{{ parent() }}
 
-	{#<script type="text/javascript">
+	<script type="text/javascript">
 	//<![CDATA[
 	jQuery(function(){
 		jQuery("#transaction_form form").submit();
 	});
 	//]]>
-	</script>#}
+	</script>
 
 {% endblock %}
 
@@ -25,28 +25,27 @@
 </p>
 <div id="transaction_form">
 	{{ formMacro.formStart( "post", transaction_url ) }}
-		{{ formMacro.text( 'module', { "value": 'subscription' } ) }}
-		{# {{ formMacro.text( 'hash', { "value": user.user_hash } ) }} #}
-		{{ formMacro.text( 'submit_go_checkout', { "value": 'yes' } ) }}
-		{# {{ formMacro.text( 'submit_go_checkout1', { "value": 'yes' } ) }}
-		{{ formMacro.text( 'submit_go_checkout2', { "value": 'yes' } ) }} #}
-		{{ formMacro.text( 'module2', {"value": 'nologin' })}}
-		{{ formMacro.text( 'first_page', { "value": '1' } ) }}
-		{{ formMacro.text( 'module_first_page', { "value": '1' } ) }}
-		{{ formMacro.text( 'sessid', { "value": session_id } ) }}
-		{# {{ formMacro.text( 'payment_fname', { "value": user.user_fname } ) }}
-		{{ formMacro.text( 'payment_lname', { "value": user.user_lname } ) }}
-		{{ formMacro.text( 'payment_address', { "value": user.user_address } ) }}
-		{{ formMacro.text( 'payment_city', { "value": user.user_city } ) }}
-		{{ formMacro.text( 'payment_state', { "value": user.user_state } ) }}
-		{{ formMacro.text( 'payment_zip', { "value": user.user_zip } ) }}
-		{{ formMacro.text( 'payment_country', { "value": user.user_country } ) }}
-		{{ formMacro.text( 'payment_phone', { "value": user.user_phone } ) }}
-		{{ formMacro.text( 'payment_email', { "value": user.user_email } ) }} #}
-		{{ formMacro.text( 'payment_total', { "value": payment_total } ) }}
-		{{ formMacro.text( 'products_table', { "value": products_table } ) }}
-		{{ formMacro.text( 'sub_invoice_info', { "value": sub_voice_info } ) }}
-		{{ formMacro.submit("Submit", none)}}
+		{{ formMacro.hidden( 'module', { "value": 'subscription' } ) }}
+		{# {{ formMacro.hidden( 'hash', { "value": user.user_hash } ) }} #}
+		{{ formMacro.hidden( 'submit_go_checkout', { "value": 'yes' } ) }}
+		{# {{ formMacro.hidden( 'submit_go_checkout1', { "value": 'yes' } ) }}
+		{{ formMacro.hidden( 'submit_go_checkout2', { "value": 'yes' } ) }} #}
+		{{ formMacro.hidden( 'module2', {"value": 'nologin' })}}
+		{{ formMacro.hidden( 'first_page', { "value": '1' } ) }}
+		{{ formMacro.hidden( 'module_first_page', { "value": '1' } ) }}
+		{{ formMacro.hidden( 'sessid', { "value": session_id } ) }}
+		{# {{ formMacro.hidden( 'payment_fname', { "value": user.user_fname } ) }}
+		{{ formMacro.hidden( 'payment_lname', { "value": user.user_lname } ) }}
+		{{ formMacro.hidden( 'payment_address', { "value": user.user_address } ) }}
+		{{ formMacro.hidden( 'payment_city', { "value": user.user_city } ) }}
+		{{ formMacro.hidden( 'payment_state', { "value": user.user_state } ) }}
+		{{ formMacro.hidden( 'payment_zip', { "value": user.user_zip } ) }}
+		{{ formMacro.hidden( 'payment_country', { "value": user.user_country } ) }}
+		{{ formMacro.hidden( 'payment_phone', { "value": user.user_phone } ) }}
+		{{ formMacro.hidden( 'payment_email', { "value": user.user_email } ) }} #}
+		{{ formMacro.hidden( 'payment_total', { "value": payment_total } ) }}
+		{{ formMacro.hidden( 'products_table', { "value": products_table } ) }}
+		{{ formMacro.hidden( 'sub_invoice_info', { "value": sub_voice_info } ) }}
 	{{ formMacro.formEnd() }}
 </div>
 {% endblock %}

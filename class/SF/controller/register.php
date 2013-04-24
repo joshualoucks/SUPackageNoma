@@ -65,18 +65,6 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		
 		$this->set( "products", $this->_available_products );
 		
-		/*
-$story_component = new SF_component_story();
-		
-		if( $slug_array ) {
-			$story_component->setAntagonist( $slug_array[0] );
-		}
-		
-		$this->set( "message", $this->message );
-		if( $this->showStory ) {
-			$this->set( "story", $story_component );
-		}
-*/
 	}
 	
 	private $_available_products = array(
@@ -96,6 +84,8 @@ $story_component = new SF_component_story();
 	public function doSubmit() {
 		if( ! array_key_exists( "results", $_POST ) ) 
 			throw new RuntimeException( "Missing key: results." );
+		$failed_validation = FALSE;
+		
 		$results = $_POST["results"];
 		//var_dump($results); exit;
 		//-----------------------------------------
@@ -107,8 +97,12 @@ $story_component = new SF_component_story();
 		foreach( $results as $key => $result ) {	
 			//$price = $result["prouct"]
 			//var_dump($result);exit;
-			$result["product_price"] = $this->_available_products[$result["product"]]["price"];
-			$result["product"] = $this->_available_products[$result["product"]]["name"];
+			if ($result["product"]) {
+				$result["product_price"] = $this->_available_products[$result["product"]]["price"];
+				$result["product"] = $this->_available_products[$result["product"]]["name"];
+			} else {
+				
+			}
 			$input = self::getInput( array(
 				"fname" => FILTER_UNSAFE_RAW,
 				"lname" => FILTER_UNSAFE_RAW,
@@ -348,6 +342,8 @@ $story_component = new SF_component_story();
 			$product->discount = 0;
 			return $product;
 		}
+		
+
 	
 }
 

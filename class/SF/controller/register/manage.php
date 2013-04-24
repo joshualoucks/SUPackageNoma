@@ -37,10 +37,6 @@ final class SF_controller_register_manage
 		$this->view = "manage/register/list.html";
 	}
 	
-	public function authenticate()
-	{
-		return DB_user::getRequiredSessionUser()->isLevelOrAbove( "Admin" );
-	}
 	public function authenticate() {
 		return parent::authenticate() && DB_user::isAdmin();
 	}

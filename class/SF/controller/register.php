@@ -14,6 +14,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 	protected $showStory = TRUE;
 	
 	public $view = "register.html";
+	public $template_name = "register";
 
 	protected $use_bootstrap = TRUE;
 	

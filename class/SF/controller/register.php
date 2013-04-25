@@ -69,14 +69,14 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 	}
 	
 	private $_available_products = array(
-		1 => array( "name" => "NOMA Member: On-site Registration", "price" => "350.00" ),
-		2 => array( "name" => "non NOMA Member: On-site Registration", "price" => "450.00" ),
-		3 => array( "name" => "Student: On-site Registration", "price" => "160.00" ),
-		4 => array( "name" => "Guest: On-site Registration", "price" => "200.00" ),
-		5 => array( "name" => "NOMA Member: Single Day Pass", "price" => "150.00" ),
-		6 => array( "name" => "non NOMA Member: Single Day Pass", "price" => "250.00" ),
-		7 => array( "name" => "Student: Single Day Pass", "price" => "100.00" ),
-		8 => array( "name" => "Guest: Single Day Pass", "price" => "100.00" ),
+		1 => array( "name" => "NOMA Member: Early-Bird Registration", "price" => "275.00" ),
+		2 => array( "name" => "Non NOMA Member: Early-Bird Registration", "price" => "325.00" ),
+		3 => array( "name" => "Student: Early-Bird Registration", "price" => "160.00" ),
+		4 => array( "name" => "Guest: Early-Bird Registration", "price" => "160.00" ),
+		5 => array( "name" => "Single Day Pass: NOMA Member", "price" => "160.00" ),
+		6 => array( "name" => "Single Day Pass: Non-Member", "price" => "210.00" ),
+		7 => array( "name" => "Single Day Pass: Guest of NOMA Member", "price" => "210.00" ),
+		8 => array( "name" => "Approved Speaker/Presenter Rate", "price" => "160.00" ),
 	);
 	
 	/**

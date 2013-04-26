@@ -31,8 +31,10 @@
   	
   	{{ sectionMacro.formStart( "post", "register/submit", {"class": "formClass"} ) }}
   	
-  	  		{{ sectionMacro.button( none, "Add Another", { "id" : "btnAdd", "value" : "Add Another"})}}
-		{{ sectionMacro.submit(none, "Submit", {"id" : "regSubmit"})}}{{ validateMacro.addPostSubmitErrors( failures ) }}
+  	  		{{ sectionMacro.button( none, "Register Another Person", { "id" : "btnAdd", "value" : "Register Another Person"})}}
+  	  		{{ sectionMacro.button( none, "Delete Last Registration", { "id" : "btnDel", "value" : "Delete Last Registration", "class": "btn btn-warning"})}}
+		{# {{ sectionMacro.submit(none, "Submit", {"id" : "regSubmit"})}} #}
+		<input type="image" src="site/1/images/btn_submit.png" name="submit" value="Submit" style="float:left; cursor:pointer; margin:0 0 0 7px;">{{ validateMacro.addPostSubmitErrors( failures ) }}
 	{{ sectionMacro.formEnd() }}
 
 

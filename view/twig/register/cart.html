@@ -21,7 +21,6 @@
 {{ parent() }}
 <p>
 	{% trans "Please wait... You will be forwarded to the checkout shortly." %}
-
 </p>
 <div id="transaction_form">
 	{{ formMacro.formStart( "post", transaction_url ) }}
@@ -34,15 +33,15 @@
 		{{ formMacro.hidden( 'first_page', { "value": '1' } ) }}
 		{{ formMacro.hidden( 'module_first_page', { "value": '1' } ) }}
 		{{ formMacro.hidden( 'sessid', { "value": session_id } ) }}
-		{{ formMacro.hidden( 'payment_fname', { "value": user.user_fname } ) }}
-		{{ formMacro.hidden( 'payment_lname', { "value": user.user_lname } ) }}
-		{{ formMacro.hidden( 'payment_address', { "value": user.user_address } ) }}
-		{{ formMacro.hidden( 'payment_city', { "value": user.user_city } ) }}
-		{{ formMacro.hidden( 'payment_state', { "value": user.user_state } ) }}
-		{{ formMacro.hidden( 'payment_zip', { "value": user.user_zip } ) }}
-		{{ formMacro.hidden( 'payment_country', { "value": user.user_country } ) }}
+		{{ formMacro.hidden( 'payment_fname', { "value": user_fname } ) }}
+		{{ formMacro.hidden( 'payment_lname', { "value": user_lname } ) }}
+		{{ formMacro.hidden( 'payment_address', { "value": user_address } ) }}
+		{{ formMacro.hidden( 'payment_city', { "value": user_city } ) }}
+		{{ formMacro.hidden( 'payment_state', { "value": user_state } ) }}
+		{{ formMacro.hidden( 'payment_zip', { "value": user_zip } ) }}
+		{{ formMacro.hidden( 'payment_country', { "value": user_country } ) }}
 		{{ formMacro.hidden( 'payment_phone', { "value": user.user_phone } ) }}
-		{{ formMacro.hidden( 'payment_email', { "value": user.user_email } ) }}
+		{{ formMacro.hidden( 'payment_email', { "value": user_email } ) }}
 		{{ formMacro.hidden( 'payment_total', { "value": payment_total } ) }}
 		{{ formMacro.hidden( 'products_table', { "value": products_table } ) }}
 		{{ formMacro.hidden( 'sub_invoice_info', { "value": sub_voice_info } ) }}

@@ -19,6 +19,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 	protected $use_bootstrap = TRUE;
 	
 	private $products = array();
+	private $first = array();
 	
 	public function init()
 	{
@@ -93,7 +94,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 			//$this->checkout();
 			
 		//-----------------------------------------
-		
+		$i = 0;
 		foreach( $results as $key => $result ) {	
 			//$price = $result["prouct"]
 			//var_dump($result);exit;
@@ -116,12 +117,14 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 				"product" => FILTER_UNSAFE_RAW,
 				"product_price" => FILTER_VALIDATE_FLOAT,
 			), $result );
+			if ($i < 1)
+				$this->first = $input;
 			$register = new DB_noma_register();
 			$register->fromArray( $input, BasePeer::TYPE_FIELDNAME );
 			$register->save();
 			
 			$this->products[] = $this->buildProductFromRegistrations($result);
-			
+			$i++;
 			//-------------------------------
 			
 			//-------------------------------
@@ -297,6 +300,15 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		/* Set Twig vars */
 		$this->set( "payment_total", sprintf( '%01.2f', $payment_total ) );
 		$this->set( "session_id", session_id() );
+		//var_dump($this->first); exit;
+		$this->set( "user_fname", $this->first["fname"] );
+		$this->set( "user_lname", $this->first["lname"] );
+		$this->set( "user_address", $this->first["address1"] );
+		$this->set( "user_city", $this->first["city"] );
+		$this->set( "user_state", $this->first["state"] );
+		$this->set( "user_zip", $this->first["zip"] );
+		$this->set( "user_country", $this->first["country"] );
+		$this->set( "user_email", $this->first["email"] );
 		$this->set( "products_table", $products_table );
 		$this->set( "sub_voice_info", implode( " | ", $product_title_array ) );
 		$this->set( "transaction_url", SF_system_controller::getURLForRedirectWithSession( SF_static_global::getSSLBase() . "/transaction.php" ) );

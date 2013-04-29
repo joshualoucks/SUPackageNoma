@@ -34,8 +34,8 @@
   	  		
   	  	{{ sectionMacro.button( none, "Delete Last Registration", { "id" : "btnDel", "value" : "", "class": "btn btn-warning", "style": "float: right;"})}}
   	  	{{ sectionMacro.button( none, "Register Another Person", { "id" : "btnAdd", "value" : "", "style": "float: right;"})}}
-		{# {{ sectionMacro.submit(none, "Submit", {"id" : "regSubmit"})}} #}
-		<input type="image" src="site/1/images/btn_submitregistration.png" id="btnSub" name="submit" value="Submit" style="float:left; cursor:pointer; margin:0 0 0 7px;"> 
+		{{ sectionMacro.submit(none, Submit, {"value": "", "id" : "btnSub", "style": "float: left;"})}}
+		{#<input type="image" src="site/1/images/btn_submitregistration.png" id="btnSub" name="submit" value="Submit" style="float:left; cursor:pointer; margin:0 0 0 7px;"> #}
 		{{ validateMacro.addPostSubmitErrors( failures ) }}
 	{{ sectionMacro.formEnd() }}
 

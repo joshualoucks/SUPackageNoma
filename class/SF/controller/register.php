@@ -76,7 +76,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		4 => array( "name" => "Guest: Early-Bird Registration", "price" => "160.00" ),
 		5 => array( "name" => "Single Day Pass: NOMA Member", "price" => "160.00" ),
 		6 => array( "name" => "Single Day Pass: Non-Member", "price" => "210.00" ),
-		8 => array( "name" => "Approved Speaker/Presenter Rate", "price" => "160.00" )
+		7 => array( "name" => "Approved Speaker/Presenter Rate", "price" => "160.00" )
 	);
 	
 	/**

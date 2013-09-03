@@ -334,7 +334,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 			$product = new stdClass();
 			$product->table_name = 'temp_transactions_products_'.self::_getUniqueCodeForTable();
 			$product->site_id = SF_static_global::getSiteId();
-			$product->title = $result["product"];
+			$product->title = $result["fname"] . " " . $result["lname"] . " - " . $result["product"];
 			$product->description1 = implode(" | ", $result);
 			$product->description2 = '';
 			$product->number = '1';

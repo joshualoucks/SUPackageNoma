@@ -9,7 +9,7 @@ final class SF_controller_register_export extends SF_system_controller_csv
 	
 	protected function getModelCriteria() {
 		return DB_noma_registerQuery::create()
-			->select(array('Fname', 'Lname', 'Email', 'Address1', 'Address2', 'City', 'State', 'Zip', 'Country', 'ProductPrice', 'CreatedAt'))
+			->select(array('Fname', 'Lname', 'Email', 'Address1', 'Address2', 'City', 'State', 'Zip', 'Country', 'Product', 'ProductPrice', 'CreatedAt'))
 			->orderByCreatedAt();
 	}
 

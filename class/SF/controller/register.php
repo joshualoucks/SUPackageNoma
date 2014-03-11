@@ -70,6 +70,12 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 	}
 	
 	private $_available_products = array(
+		1 => array( "name" => "NOMA Member: Early Bird Registration", "price" => "285.00" ),
+		2 => array( "name" => "Non-NOMA Member: Early Bird Registration", "price" => "350.00" ),
+		3 => array( "name" => "Student: Early Bird Registration", "price" => "155.00" )
+	);
+	
+	/**private $_available_products = array(
 		1 => array( "name" => "NOMA Member: On-Site Registration", "price" => "350.00" ),
 		2 => array( "name" => "Non-NOMA Member: On-Site Registration", "price" => "450.00" ),
 		3 => array( "name" => "Student: On-Site Registration", "price" => "160.00" ),
@@ -78,7 +84,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		6 => array( "name" => "Single Day Pass NOMA Member", "price" => "150.00" ),
 		7 => array( "name" => "Single Day Pass non-NOMA Member", "price" => "250.00" ),
 		8 => array( "name" => "Single Day Pass Guest of NOMA Member or Student", "price" => "100.00" )
-	);
+	);*/
 	
 	/**
 	*

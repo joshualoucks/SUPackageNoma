@@ -69,23 +69,25 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		
 	}
 	
-	private $_available_products = array(
+	/**private $_available_products = array(
 		1 => array( "name" => "NOMA Member: Early Bird Registration", "price" => "285.00" ),
 		2 => array( "name" => "Non-NOMA Member: Early Bird Registration", "price" => "350.00" ),
 		3 => array( "name" => "Student: Early Bird Registration", "price" => "155.00" ),
 		4 => array( "name" => "Guest of Member: Early Bird Registration", "price" => "195.00" )
 	);
+	**/
 	
-	/**private $_available_products = array(
-		1 => array( "name" => "NOMA Member: On-Site Registration", "price" => "350.00" ),
-		2 => array( "name" => "Non-NOMA Member: On-Site Registration", "price" => "450.00" ),
-		3 => array( "name" => "Student: On-Site Registration", "price" => "160.00" ),
-		4 => array( "name" => "Approved Speaker/Presenter", "price" => "160.00"),
-		5 => array( "name" => "Guest: On-Site Registration", "price" => "200.00" ),
-		6 => array( "name" => "Single Day Pass NOMA Member", "price" => "150.00" ),
-		7 => array( "name" => "Single Day Pass non-NOMA Member", "price" => "250.00" ),
-		8 => array( "name" => "Single Day Pass Guest of NOMA Member or Student", "price" => "100.00" )
-	);*/
+	private $_available_products = array(
+		1 => array( "name" => "NOMA Member: Advance Registration", "price" => "310.00" ),
+		2 => array( "name" => "Non-NOMA Member: Advance Registration", "price" => "375.00" ),
+		3 => array( "name" => "Student: Advance Registration", "price" => "155.00" ),
+		4 => array( "name" => "Guest of Member: Advance Registration", "price" => "195.00"),
+		5 => array( "name" => "Single Day Pass NOMA Member", "price" => "165.00" ),
+		6 => array( "name" => "Single Day Pass non-NOMA Member", "price" => "240.00" ),
+		7 => array( "name" => "Single Day Pass Guest of NOMA Member or Student", "price" => "125.00" ),
+		8 => array( "name" => "Volunteer Advance Registration", "price" => "225.00" ),
+		9 => array( "name" => "Speaker", "price" => "175.00" )
+	);
 	
 	/**
 	*

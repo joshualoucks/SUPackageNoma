@@ -69,14 +69,6 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		
 	}
 	
-	/**private $_available_products = array(
-		1 => array( "name" => "NOMA Member: Early Bird Registration", "price" => "285.00" ),
-		2 => array( "name" => "Non-NOMA Member: Early Bird Registration", "price" => "350.00" ),
-		3 => array( "name" => "Student: Early Bird Registration", "price" => "155.00" ),
-		4 => array( "name" => "Guest of Member: Early Bird Registration", "price" => "195.00" )
-	);
-	**/
-	
 	private $_available_products = array(
 		1 => array( "name" => "NOMA Member: Advance Registration", "price" => "310.00" ),
 		2 => array( "name" => "Non-NOMA Member: Advance Registration", "price" => "375.00" ),

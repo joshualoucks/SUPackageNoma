@@ -70,16 +70,16 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 	}
 	
 	private $_available_products = array(
-		1 => array( "name" => "NOMA Member: Advance Registration", "price" => "310.00" ),
-		2 => array( "name" => "Non-NOMA Member: Advance Registration", "price" => "375.00" ),
-		3 => array( "name" => "Student: Advance Registration", "price" => "155.00" ),
-		4 => array( "name" => "Guest of Member: Advance Registration", "price" => "195.00"),
-		5 => array( "name" => "Single Day Pass NOMA Member", "price" => "165.00" ),
-		6 => array( "name" => "Single Day Pass non-NOMA Member", "price" => "240.00" ),
-		7 => array( "name" => "Single Day Pass Guest of NOMA Member or Student", "price" => "125.00" ),
-		8 => array( "name" => "Volunteer Advance Registration", "price" => "225.00" ),
-		9 => array( "name" => "Speaker", "price" => "175.00" ),
-		9 => array( "name" => "Professional Design Competition Registration", "price" => "150.00" )
+		array( "name" => "NOMA Member: Advance Registration", "price" => "310.00" ),
+		array( "name" => "Non-NOMA Member: Advance Registration", "price" => "375.00" ),
+		array( "name" => "Student: Advance Registration", "price" => "155.00" ),
+		array( "name" => "Guest of Member: Advance Registration", "price" => "195.00"),
+		array( "name" => "Single Day Pass NOMA Member", "price" => "165.00" ),
+		array( "name" => "Single Day Pass non-NOMA Member", "price" => "240.00" ),
+		array( "name" => "Single Day Pass Guest of NOMA Member or Student", "price" => "125.00" ),
+		array( "name" => "Volunteer Advance Registration", "price" => "225.00" ),
+		array( "name" => "Speaker", "price" => "175.00" ),
+		array( "name" => "Professional Design Competition Registration", "price" => "150.00" )
 	);
 	
 	/**

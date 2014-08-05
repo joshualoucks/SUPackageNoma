@@ -101,7 +101,7 @@ final class SF_controller_register extends SF_system_controller_twig_template im
 		foreach( $results as $key => $result ) {	
 			//$price = $result["prouct"]
 			//var_dump($result);exit;
-			if ($result["product"]) {
+			if ( array_key_exists( $result["product"], $this->_available_products ) ) {
 				$result["product_price"] = $this->_available_products[$result["product"]]["price"];
 				$result["product"] = $this->_available_products[$result["product"]]["name"];
 			} else {
